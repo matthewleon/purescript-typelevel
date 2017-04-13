@@ -307,19 +307,19 @@ instance csGTrGT :: CS GT r GT
 instance csLTrLT :: CS LT r LT
 
 class Eq x y
-instance trichEq :: (Trich x y EQ) => Eq x y
+instance trichEq :: (Nat x, Nat y, Trich x y EQ) => Eq x y
 
 eq :: forall x y. Eq x y => x -> y -> Unit
 eq _ _ = undefined
 
 class Gt x y
-instance trichGt :: (Trich x y GT) => Gt x y
+instance trichGt :: (Nat x, Pos y, Trich x y GT) => Gt x y
 
 gt :: forall x y. Gt x y => x -> y -> Unit
 gt _ _ = undefined
 
 class Lt x y
-instance trichLt :: (Trich x y LT) => Lt x y
+instance trichLt :: (Pos x, Nat y, Trich x y LT) => Lt x y
 
 lt :: forall x y. Lt x y => x -> y -> Unit
 lt _ _ = undefined
