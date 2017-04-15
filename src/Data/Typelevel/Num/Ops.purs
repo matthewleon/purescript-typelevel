@@ -335,12 +335,14 @@ lt _ _ = undefined
 
 class GtEq x y
 instance trichGtEq :: (Succ x x', Trich x' y GT) => GtEq x y
+instance transitiveGtEq :: (GtEq x y, GtEq y z) => GtEq x z
 
 gteq :: forall x y. GtEq x y => x -> y -> Unit
 gteq _ _ = undefined
 
 class LtEq x y
 instance trichLtEq :: (Succ y y', Trich x y' LT) => LtEq x y
+instance transitiveLtEq :: (LtEq x y, LtEq y z) => LtEq x z
 
 lteq :: forall x y. LtEq x y => x -> y -> Unit
 lteq _ _ = undefined
