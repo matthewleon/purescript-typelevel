@@ -321,12 +321,14 @@ eq _ _ = undefined
 
 class Gt x y
 instance trichGt :: (Trich x y GT) => Gt x y
+instance transitiveGt :: (Gt x y, Gt y z) => Gt x z
 
 gt :: forall x y. Gt x y => x -> y -> Unit
 gt _ _ = undefined
 
 class Lt x y
 instance trichLt :: (Trich x y LT) => Lt x y
+instance transitiveLt :: (Lt x y, Lt y z) => Lt x z
 
 lt :: forall x y. Lt x y => x -> y -> Unit
 lt _ _ = undefined
